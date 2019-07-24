@@ -25,11 +25,25 @@ const snakes = {
         console.log(this);
     }
 };
-snakes.sound('Hiss!')
+snakes.sound('Hiss!');
 // code example for Implicit Binding
 
 // Principle 3
-
+function wastelandWanderer(greeter) {
+    this.greeting = 'Got a stimpak? ';
+    this.greeter = greeter;
+    this.speak = function() {
+      console.log(this.greeting + this.greeter);
+      console.log(this);
+    };
+  }
+  
+  const falloutBoy = new wastelandWanderer('Renegade');
+  const renegade = new wastelandWanderer('Fallout Boy');
+  
+  falloutBoy.speak();
+  renegade.speak();
+  
 // code example for New Binding
 
 // Principle 4
