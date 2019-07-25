@@ -21,7 +21,7 @@ animalNoise('Moo!');
 const snakes = {
     food: 'Mice',
     sound: function(snakeSound) {
-        console.log('My pet loves to eat ${food} and she loves to say ${this.snakeSound}');
+        console.log(`My pet loves to eat ${this.food} and she loves to say ${this.snakeSound}`);
         console.log(this);
     }
 };
@@ -30,7 +30,7 @@ snakes.sound('Hiss!');
 
 // Principle 3
 function wastelandWanderer(greeter) {
-    this.greeting = 'Got a stimpak? ';
+    this.greeting = 'Got a stimpak, ';
     this.greeter = greeter;
     this.speak = function() {
       console.log(this.greeting + this.greeter);
@@ -38,8 +38,8 @@ function wastelandWanderer(greeter) {
     };
   }
   
-  const falloutBoy = new wastelandWanderer('Renegade');
-  const renegade = new wastelandWanderer('Fallout Boy');
+  const falloutBoy = falloutBoy.speak.apply('Renegade');
+  const renegade = renegade.speak.call('Fallout Boy');
   
   falloutBoy.speak();
   renegade.speak();
@@ -47,5 +47,7 @@ function wastelandWanderer(greeter) {
 // code example for New Binding
 
 // Principle 4
+
+
 
 // code example for Explicit Binding
