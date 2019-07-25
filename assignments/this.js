@@ -38,8 +38,8 @@ function wastelandWanderer(greeter) {
     };
   }
   
-  const falloutBoy = falloutBoy.speak.apply('Renegade');
-  const renegade = renegade.speak.call('Fallout Boy');
+  const falloutBoy = new greeter('Renegade');
+  const renegade = new greeter('Fallout Boy');
   
   falloutBoy.speak();
   renegade.speak();
@@ -47,7 +47,20 @@ function wastelandWanderer(greeter) {
 // code example for New Binding
 
 // Principle 4
+function wastelandWanderer(greeter) {
+  this.greeting = 'Got a stimpak, ';
+  this.greeter = greeter;
+  this.speak = function() {
+    console.log(this.greeting + this.greeter);
+    console.log(this);
+  };
+}
 
+const falloutBoy = falloutBoy.speak.apply('Renegade');
+const renegade = renegade.speak.call('Fallout Boy');
+
+falloutBoy.speak();
+renegade.speak();
 
 
 // code example for Explicit Binding
