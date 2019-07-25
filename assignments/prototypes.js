@@ -19,10 +19,11 @@ function gameObject (attr) {
   this.newCreatedAt = attr.createdAt,
   this.newName = attr.name,
   this.newDimensions = attr.dimensions
-  destroy.prototype.gameObject = function() {
-    return `${this.name} was removed from the game.`
-  }
 };
+  gameObject.prototype.destory = function() {
+    return `${this.name} was removed from the game.`
+  };
+
 
 /*
   === CharacterStats ===
@@ -31,12 +32,12 @@ function gameObject (attr) {
   * should inherit destroy() from GameObject's prototype
 */
 function characterStats (attr) {
-  this.newHealthPoints = attr.healthPoints;
-  takeDamage.prototype.characterStats = function() {
-    return `${this.name} took damage.`
-    destory.call(this, attr);
-  };
-  
+  this.newHealthPoints = attr.healthPoints;  
+};
+
+takeDamage.prototype.characterStats = function() {
+  return `${this.name} took damage.`
+  destory.call(this, attr);
 };
 
 /*
@@ -52,10 +53,11 @@ function Humanoid (attr) {
   this.newTeam = attr.team;
   this.newWeapons = attr.weapons;
   this.language = attr.language;
-  greet.prototype.Humanoid = function(){
-    return `${this.name} offers a greeting in ${this.language}.`
-  };
-} ;
+  } ;
+  
+greet.prototype.Humanoid = function(){
+  return `${this.name} offers a greeting in ${this.language}.`
+};
 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid

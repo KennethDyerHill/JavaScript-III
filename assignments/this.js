@@ -29,9 +29,9 @@ snakes.sound('Hiss!');
 // code example for Implicit Binding
 
 // Principle 3
-function wastelandWanderer(greeter) {
+function greeter(greets) {
     this.greeting = 'Got a stimpak, ';
-    this.greeter = greeter;
+    this.greeter = greets;
     this.speak = function() {
       console.log(this.greeting + this.greeter);
       console.log(this);
