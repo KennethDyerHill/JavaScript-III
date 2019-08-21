@@ -11,7 +11,7 @@
 
 // Principle 1
 function animalNoise(noise) {
-   console.log(this);
+   console.log(this.noise);
    return noise;
 }
 animalNoise('Moo!');
@@ -22,7 +22,7 @@ const snakes = {
     food: 'Mice',
     sound: function(snakeSound) {
         console.log(`My pet loves to eat ${this.food} and she loves to say ${this.snakeSound}`);
-        console.log(this);
+        console.log(this.snakeSound);
     }
 };
 snakes.sound('Hiss!');
@@ -38,8 +38,8 @@ function greeter(greets) {
     };
   }
   
-  const falloutBoy = new greeter('Renegade');
-  const renegade = new greeter('Fallout Boy');
+  var falloutBoy = new greeter('Renegade');
+  var renegade = new greeter('Fallout Boy');
   
   falloutBoy.speak();
   renegade.speak();
@@ -56,8 +56,8 @@ function wastelandWanderer(greeter) {
   };
 }
 
-const falloutBoy = falloutBoy.speak.apply('Renegade');
-const renegade = renegade.speak.call('Fallout Boy');
+var falloutBoy = falloutBoy.speak.apply('Renegade');
+var renegade = renegade.speak.call('Fallout Boy');
 
 falloutBoy.speak();
 renegade.speak();
