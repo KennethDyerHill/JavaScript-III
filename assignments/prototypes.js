@@ -1,3 +1,4 @@
+import destroy from 'destroy';
 /*
   Object oriented design is commonly used in video games.  For this part of the assignment you will be implementing several constructor functions with their correct inheritance hierarchy.
 
@@ -20,7 +21,7 @@ function gameObject (attr) {
   this.newName = attr.name,
   this.newDimensions = attr.dimensions
 };
-  gameObject.prototype.destory = function() {
+  gameObject.prototype.destroy = function() {
     return `${this.name} was removed from the game.`
   };
 
@@ -35,11 +36,12 @@ function characterStats (attr) {
   this.newHealthPoints = attr.healthPoints;  
 };
 
-takeDamage.prototype.characterStats = function() {
+characterStats.prototype.takeDamage = function() {
   return `${this.name} took damage.`
-  destory.call(this, attr);
+  
 };
-
+gameObject.prototype.destroy()
+destroy.call(this, attr);
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team

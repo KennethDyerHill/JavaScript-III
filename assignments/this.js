@@ -11,7 +11,7 @@
 
 // Principle 1
 function animalNoise(noise) {
-   console.log(this.noise);
+   console.log(this);
    return noise;
 }
 animalNoise('Moo!');
