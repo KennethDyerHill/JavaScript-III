@@ -17,12 +17,13 @@ import destroy from 'destroy';
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 function gameObject (attr) {
-  this.newCreatedAt = attr.createdAt,
-  this.newName = attr.name,
-  this.newDimensions = attr.dimensions
+  this.createdAt = attr.createdAt,
+  this.name = attr.name,
+  this.dimensions = attr.dimensions
 };
-  gameObject.prototype.destroy = function() {
-    return `${this.name} was removed from the game.`
+
+  gameObject.prototype.destroy = function(destroyed) {
+    console.log(`${this.name} was removed from the game.`)
   };
 
 
@@ -33,15 +34,15 @@ function gameObject (attr) {
   * should inherit destroy() from GameObject's prototype
 */
 function characterStats (attr) {
-  this.newHealthPoints = attr.healthPoints;  
+  this.healthPoints = attr.healthPoints;  
 };
 
-characterStats.prototype.takeDamage = function() {
-  return `${this.name} took damage.`
+characterStats.prototype.takeDamage = function(damaged) {
+  console.log(`${this.name} took damage.`)
   
 };
-gameObject.prototype.destroy()
-destroy.call(this, attr);
+// gameObject.prototype.destroy()
+// destroy.call(this, attr);
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
@@ -52,8 +53,8 @@ destroy.call(this, attr);
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid (attr) {
-  this.newTeam = attr.team;
-  this.newWeapons = attr.weapons;
+  this.Team = attr.team;
+  this.Weapons = attr.weapons;
   this.language = attr.language;
   } ;
   
@@ -69,56 +70,56 @@ greet.prototype.Humanoid = function(){
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
-  const mage = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 1,
-      height: 1,
-    },
-    healthPoints: 5,
-    name: 'Bruce',
-    team: 'Mage Guild',
-    weapons: [
-      'Staff of Shamalama',
-    ],
-    language: 'Common Tongue',
-  });
 
-  const swordsman = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 2,
-      height: 2,
-    },
-    healthPoints: 15,
-    name: 'Sir Mustachio',
-    team: 'The Round Table',
-    weapons: [
-      'Giant Sword',
-      'Shield',
-    ],
-    language: 'Common Tongue',
-  });
+  // const mage = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 2,
+  //     width: 1,
+  //     height: 1,
+  //   },
+  //   healthPoints: 5,
+  //   name: 'Bruce',
+  //   team: 'Mage Guild',
+  //   weapons: [
+  //     'Staff of Shamalama',
+  //   ],
+  //   language: 'Common Tongue',
+  // });
 
-  const archer = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 1,
-      width: 2,
-      height: 4,
-    },
-    healthPoints: 10,
-    name: 'Lilith',
-    team: 'Forest Kingdom',
-    weapons: [
-      'Bow',
-      'Dagger',
-    ],
-    language: 'Elvish',
-  });
+  // const swordsman = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 2,
+  //     width: 2,
+  //     height: 2,
+  //   },
+  //   healthPoints: 15,
+  //   name: 'Sir Mustachio',
+  //   team: 'The Round Table',
+  //   weapons: [
+  //     'Giant Sword',
+  //     'Shield',
+  //   ],
+  //   language: 'Common Tongue',
+  // });
+
+  // const archer = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 1,
+  //     width: 2,
+  //     height: 4,
+  //   },
+  //   healthPoints: 10,
+  //   name: 'Lilith',
+  //   team: 'Forest Kingdom',
+  //   weapons: [
+  //     'Bow',
+  //     'Dagger',
+  //   ],
+  //   language: 'Elvish',
+  // });
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
@@ -130,7 +131,7 @@ greet.prototype.Humanoid = function(){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  

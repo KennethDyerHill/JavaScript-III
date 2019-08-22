@@ -22,19 +22,20 @@ const snakes = {
     food: 'Mice',
     sound: function(snakeSound) {
         console.log(`My pet loves to eat ${this.food} and she loves to say ${this.snakeSound}`);
-        console.log(this.snakeSound);
+        console.log(this);
     }
+    
 };
 snakes.sound('Hiss!');
 // code example for Implicit Binding
 
 // Principle 3
 function greeter(greets) {
-    this.greeting = 'Got a stimpak, ';
+    this.greeting = 'Get a stimpak, ';
     this.greeter = greets;
     this.speak = function() {
       console.log(this.greeting + this.greeter);
-      console.log(this);
+      // console.log(this);
     };
   }
   
@@ -54,13 +55,13 @@ function wastelandWanderer(greeter) {
     console.log(this.greeting + this.greeter);
     console.log(this);
   };
-}
+
 
 var falloutBoy = falloutBoy.speak.apply('Renegade');
 var renegade = renegade.speak.call('Fallout Boy');
 
 falloutBoy.speak();
 renegade.speak();
-
+}
 
 // code example for Explicit Binding
