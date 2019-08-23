@@ -18,13 +18,21 @@ animalNoise('Moo!');
 // code example for Window Binding
 
 // Principle 2
+// const myObj = {
+//   greeting: 'Hello',
+//   sayHello: function(name) {
+//     console.log(`${this.greeting} my name is ${name}`);
+//     console.log(this);
+//   }
+// };
+// myObj.sayHello('Ryan');
+
 const snakes = {
     food: 'Mice',
     sound: function(snakeSound) {
-        console.log(`My pet loves to eat ${this.food} and she loves to say ${this.snakeSound}`);
+        console.log(`My pet loves to eat ${this.food} and she loves to say ${snakeSound}`);
         console.log(this);
-    }
-    
+    }   
 };
 snakes.sound('Hiss!');
 // code example for Implicit Binding

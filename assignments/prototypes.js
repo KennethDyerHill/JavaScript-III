@@ -1,4 +1,4 @@
-import destroy from 'destroy';
+
 /*
   Object oriented design is commonly used in video games.  For this part of the assignment you will be implementing several constructor functions with their correct inheritance hierarchy.
 
@@ -16,14 +16,14 @@ import destroy from 'destroy';
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
-function gameObject (attr) {
-  this.createdAt = attr.createdAt,
-  this.name = attr.name,
-  this.dimensions = attr.dimensions
-};
+function GameObject (attr) {
+  this.createdAt = attr.createdAt;
+  this.name = attr.name;
+  this.dimensions = attr.dimensions;
+}
 
-  gameObject.prototype.destroy = function(destroyed) {
-    console.log(`${this.name} was removed from the game.`)
+  GameObject.prototype.destroy = function() {
+    return (`${this.name} was removed from the game.`);
   };
 
 
@@ -34,12 +34,12 @@ function gameObject (attr) {
   * should inherit destroy() from GameObject's prototype
 */
 function characterStats (attr) {
+  GameObject.call(this, attr);
   this.healthPoints = attr.healthPoints;  
 };
-
-characterStats.prototype.takeDamage = function(damaged) {
-  console.log(`${this.name} took damage.`)
-  
+characterStats.prototype = Object.create(GameObject.prototype)
+characterStats.prototype.takeDamage = function() {
+  return (`${this.name} took damage.`);
 };
 // gameObject.prototype.destroy()
 // destroy.call(this, attr);
@@ -53,12 +53,13 @@ characterStats.prototype.takeDamage = function(damaged) {
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid (attr) {
-  this.Team = attr.team;
-  this.Weapons = attr.weapons;
+  characterStats.call(this, attr);
+  this.team = attr.team;
+  this.weapons = attr.weapons;
   this.language = attr.language;
   } ;
-  
-greet.prototype.Humanoid = function(){
+Humanoid.prototype = Object.create(characterStats.prototype)  
+Humanoid.prototype.greet = function(){
   return `${this.name} offers a greeting in ${this.language}.`
 };
 
@@ -71,55 +72,55 @@ greet.prototype.Humanoid = function(){
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 
-  // const mage = new Humanoid({
-  //   createdAt: new Date(),
-  //   dimensions: {
-  //     length: 2,
-  //     width: 1,
-  //     height: 1,
-  //   },
-  //   healthPoints: 5,
-  //   name: 'Bruce',
-  //   team: 'Mage Guild',
-  //   weapons: [
-  //     'Staff of Shamalama',
-  //   ],
-  //   language: 'Common Tongue',
-  // });
+  const mage = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 1,
+      height: 1,
+    },
+    healthPoints: 5,
+    name: 'Bruce',
+    team: 'Mage Guild',
+    weapons: [
+      'Staff of Shamalama',
+    ],
+    language: 'Common Tongue',
+  });
 
-  // const swordsman = new Humanoid({
-  //   createdAt: new Date(),
-  //   dimensions: {
-  //     length: 2,
-  //     width: 2,
-  //     height: 2,
-  //   },
-  //   healthPoints: 15,
-  //   name: 'Sir Mustachio',
-  //   team: 'The Round Table',
-  //   weapons: [
-  //     'Giant Sword',
-  //     'Shield',
-  //   ],
-  //   language: 'Common Tongue',
-  // });
+  const swordsman = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 15,
+    name: 'Sir Mustachio',
+    team: 'The Round Table',
+    weapons: [
+      'Giant Sword',
+      'Shield',
+    ],
+    language: 'Common Tongue',
+  });
 
-  // const archer = new Humanoid({
-  //   createdAt: new Date(),
-  //   dimensions: {
-  //     length: 1,
-  //     width: 2,
-  //     height: 4,
-  //   },
-  //   healthPoints: 10,
-  //   name: 'Lilith',
-  //   team: 'Forest Kingdom',
-  //   weapons: [
-  //     'Bow',
-  //     'Dagger',
-  //   ],
-  //   language: 'Elvish',
-  // });
+  const archer = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 10,
+    name: 'Lilith',
+    team: 'Forest Kingdom',
+    weapons: [
+      'Bow',
+      'Dagger',
+    ],
+    language: 'Elvish',
+  });
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
